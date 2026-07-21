@@ -3,620 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Provakar Prep Hub - Your Smart Competitive Exam Preparation Companion. SSC, Banking, Railway, WBCS preparation dashboard." />
-  <title>Provakar Prep Hub — Your Smart Competitive Exam Preparation Companion</title>
-
-  <!-- Google Fonts: Poppins (English) + Hind Siliguri (Bengali) -->
+  <title>Provakar Prep Hub — Extreme Edition</title>
+  <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-  <!-- Custom Styles & Data -->
   <link rel="stylesheet" href="style.css" />
   <script src="data.js" defer></script>
 </head>
 <body>
 
-  <!-- ===== SKELETON LOADER ===== -->
-  <div id="skeletonLoader" class="skeleton-loader">
-    <div class="skeleton-nav"></div>
-    <div class="skeleton-hero">
-      <div class="sk-line lg"></div>
-      <div class="sk-line md"></div>
-      <div class="sk-line sm"></div>
-      <div class="sk-btns">
-        <div class="sk-btn"></div>
-        <div class="sk-btn"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== NAVBAR ===== -->
+  <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#home" class="logo" aria-label="Provakar Prep Hub Home">
+      <a href="#home" class="logo">
         <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-        <span class="logo-text">
-          <strong>Provakar</strong>
-          <small>Prep Hub</small>
-        </span>
+        <span class="logo-text"><strong>Provakar</strong><small>Extreme Hub</small></span>
       </a>
-
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#home" class="nav-link" data-i18n="nav.home">হোম</a>
-        <a href="#dashboard" class="nav-link" data-i18n="nav.dashboard">ড্যাশবোর্ড</a>
-        <a href="#planner" class="nav-link" data-i18n="nav.planner">স্টাডি প্ল্যানার</a>
-        <a href="#syllabus" class="nav-link" data-i18n="nav.syllabus">সিলেবাস</a>
-        <a href="#quiz" class="nav-link" data-i18n="nav.quiz">কুইজ জোন</a>
-        <a href="#current" class="nav-link" data-i18n="nav.current">কারেন্ট অ্যাফেয়ার্স</a>
-        <a href="#revision" class="nav-link" data-i18n="nav.revision">রিভিশন</a>
-        <a href="#progress" class="nav-link" data-i18n="nav.progress">অগ্রগতি</a>
-        <a href="#about" class="nav-link" data-i18n="nav.about">সম্পর্কে</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link">হোম</a>
+        <a href="#dashboard" class="nav-link">ড্যাশবোর্ড</a>
+        <a href="#planner" class="nav-link">প্ল্যানার</a>
+        <a href="#syllabus" class="nav-link">সিলেবাস</a>
+        <a href="#quiz" class="nav-link">কুইজ</a>
+        <a href="#revision" class="nav-link">রিভিশন</a>
+        <a href="#progress" class="nav-link">অগ্রগতি</a>
       </nav>
-
       <div class="nav-actions">
-        <button class="icon-btn" id="langToggle" aria-label="Toggle Language">
-          <i class="fa-solid fa-language"></i>
-          <span id="langLabel">English</span>
-        </button>
-        <button class="icon-btn" id="darkToggle" aria-label="Toggle Dark Mode">
-          <i class="fa-solid fa-moon" id="darkIcon"></i>
-        </button>
-        <button class="icon-btn hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="xp-badge" id="xpBadge" title="Your Level & XP">
+          <i class="fa-solid fa-bolt"></i> <span id="xpText">L1: 0 XP</span>
+          <div class="xp-bar-mini"><span id="xpBarFill" style="width:0%"></span></div>
+        </div>
+        <button class="icon-btn" id="langToggle"><i class="fa-solid fa-language"></i> <span id="langLabel">English</span></button>
+        <button class="icon-btn" id="darkToggle"><i class="fa-solid fa-moon" id="darkIcon"></i></button>
+        <button class="icon-btn hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
+  <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-bg">
-      <div class="blob blob1"></div>
-      <div class="blob blob2"></div>
-      <div class="blob blob3"></div>
+      <div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div>
       <div class="grid-overlay"></div>
-      <div class="particles">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span>
-      </div>
     </div>
-
     <div class="hero-content">
       <div class="hero-text">
-        <span class="hero-badge"><i class="fa-solid fa-bolt"></i> <span data-i18n="hero.badge">তোমার স্মার্ট প্রস্তুতি সঙ্গী</span></span>
-        <h1 data-i18n="hero.welcome">স্বাগতম, প্রবাকর!</h1>
-        <p data-i18n="hero.subheading">তোমার Competitive Exam Preparation এখন আরও স্মার্ট, সংগঠিত এবং লক্ষ্যভিত্তিক।</p>
+        <span class="hero-badge"><i class="fa-solid fa-bolt"></i> AI-Powered Smart Prep</span>
+        <h1 id="typewriter"></h1>
+        <p>তোমার Competitive Exam Preparation এখন আরও স্মার্ট, গেমিফাইড এবং অ্যাডভান্সড।</p>
         <div class="hero-cta">
-          <a href="#planner" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> <span data-i18n="hero.startStudying">পড়া শুরু করো</span></a>
-          <a href="#quiz" class="btn btn-ghost"><i class="fa-solid fa-clipboard-question"></i> <span data-i18n="hero.takeQuiz">কুইজ দাও</span></a>
+          <a href="#planner" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> পড়া শুরু করো</a>
+          <a href="#quiz" class="btn btn-ghost"><i class="fa-solid fa-clipboard-question"></i> কুইজ দাও</a>
         </div>
       </div>
-
       <div class="hero-visual">
         <div class="hero-illustration">
           <i class="fa-solid fa-user-graduate hero-grad-icon"></i>
-          <div class="ring ring1"></div>
-          <div class="ring ring2"></div>
-          <div class="ring ring3"></div>
-        </div>
-        <div class="float-card fc1">
-          <i class="fa-solid fa-bullseye"></i>
-          <div>
-            <small data-i18n="hero.goal">আজকের লক্ষ্য</small>
-            <strong>6 <span data-i18n="hero.hours">ঘণ্টা</span> <span data-i18n="hero.study">পড়াশোনা</span></strong>
-          </div>
-        </div>
-        <div class="float-card fc2">
-          <i class="fa-solid fa-fire"></i>
-          <div>
-            <small data-i18n="hero.streak">স্টাডি স্ট্রিক</small>
-            <strong>7 <span data-i18n="hero.days">Days</span></strong>
-          </div>
-        </div>
-        <div class="float-card fc3">
-          <i class="fa-solid fa-trophy"></i>
-          <div>
-            <small data-i18n="hero.quizScore">কুইজ স্কোর</small>
-            <strong>82%</strong>
-          </div>
+          <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== DASHBOARD ===== -->
+  <!-- Dashboard -->
   <section class="section" id="dashboard">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-gauge-high"></i> <span data-i18n="dashboard.tag">Overview</span></span>
-      <h2 data-i18n="dashboard.heading">আজকের প্রস্তুতি</h2>
-      <p data-i18n="dashboard.subtitle">তোমার দৈনিক অগ্রগতি এক নজরে</p>
+      <span class="section-tag"><i class="fa-solid fa-gauge-high"></i> Overview</span>
+      <h2>আজকের প্রস্তুতি</h2>
     </div>
-
     <div class="stats-grid">
-      <article class="stat-card tilt" data-color="blue">
-        <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
-        <div class="stat-info">
-          <small data-i18n="dashboard.studyHours">পড়ার সময়</small>
-          <h3><span class="counter" data-target="3.5" data-suffix="">0</span> / 6 <span data-i18n="hero.hours">ঘণ্টা</span></h3>
-          <div class="mini-bar"><span style="width:58%"></span></div>
-        </div>
-      </article>
-
-      <article class="stat-card tilt" data-color="emerald">
-        <div class="stat-icon"><i class="fa-solid fa-check-double"></i></div>
-        <div class="stat-info">
-          <small data-i18n="dashboard.completedTopics">সম্পন্ন টপিক</small>
-          <h3><span class="counter" data-target="24" data-suffix="">0</span> / 60</h3>
-          <div class="mini-bar"><span style="width:40%"></span></div>
-        </div>
-      </article>
-
-      <article class="stat-card tilt" data-color="amber">
-        <div class="stat-icon"><i class="fa-solid fa-star-half-stroke"></i></div>
-        <div class="stat-info">
-          <small data-i18n="dashboard.quizAverage">কুইজ গড়</small>
-          <h3><span class="counter" data-target="82" data-suffix="%">0</span></h3>
-          <div class="mini-bar"><span style="width:82%"></span></div>
-        </div>
-      </article>
-
-      <article class="stat-card tilt" data-color="cyan">
-        <div class="stat-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
-        <div class="stat-info">
-          <small data-i18n="dashboard.streak">ধারাবাহিকতা</small>
-          <h3><span class="counter" data-target="7" data-suffix="">0</span> <span data-i18n="hero.days">Days</span></h3>
-          <div class="mini-bar"><span style="width:70%"></span></div>
-        </div>
-      </article>
+      <article class="stat-card tilt" data-color="blue"><div class="stat-icon"><i class="fa-solid fa-clock"></i></div><div class="stat-info"><small>পড়ার সময়</small><h3><span class="counter" data-target="3.5">0</span> / 6 hrs</h3><div class="mini-bar"><span style="width:58%"></span></div></div></article>
+      <article class="stat-card tilt" data-color="emerald"><div class="stat-icon"><i class="fa-solid fa-check-double"></i></div><div class="stat-info"><small>সম্পন্ন টপিক</small><h3><span class="counter" data-target="24">0</span> / 60</h3><div class="mini-bar"><span style="width:40%"></span></div></div></article>
+      <article class="stat-card tilt" data-color="amber"><div class="stat-icon"><i class="fa-solid fa-star-half-stroke"></i></div><div class="stat-info"><small>কুইজ গড়</small><h3><span class="counter" data-target="82" data-suffix="%">0</span></h3><div class="mini-bar"><span style="width:82%"></span></div></div></article>
+      <article class="stat-card tilt" data-color="cyan"><div class="stat-icon"><i class="fa-solid fa-fire-flame-curved"></i></div><div class="stat-info"><small>স্ট্রিক</small><h3><span class="counter" data-target="7">0</span> Days</h3><div class="mini-bar"><span style="width:70%"></span></div></div></article>
     </div>
-
-    <div class="dashboard-grid">
-      <!-- Today's Tasks -->
-      <div class="card glass reveal">
-        <div class="card-head">
-          <h3><i class="fa-solid fa-list-check"></i> <span data-i18n="dashboard.todaysTasks">আজকের কাজ</span></h3>
+    
+    <div class="card glass reveal">
+        <div class="card-head" style="justify-content: space-between;">
+            <h3><i class="fa-solid fa-database"></i> ডেটা ব্যাকআপ (Data Backup)</h3>
+            <div>
+                <button class="btn btn-sm btn-success" id="exportBtn"><i class="fa-solid fa-file-export"></i> Export</button>
+                <button class="btn btn-sm btn-warning" id="importBtn"><i class="fa-solid fa-file-import"></i> Import</button>
+                <input type="file" id="importFile" accept=".json" hidden />
+            </div>
         </div>
-        <form id="todayTaskForm" class="inline-form">
-          <input type="text" id="todayTaskInput" placeholder="নতুন কাজ যোগ করো / Add new task" required />
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> <span data-i18n="common.add">যোগ</span></button>
-        </form>
-        <div class="task-progress">
-          <div class="task-progress-bar"><span id="todayProgressBar" style="width:0%"></span></div>
-          <small id="todayProgressText">0 / 0</small>
-        </div>
-        <ul id="todayTaskList" class="task-list" aria-live="polite"></ul>
-      </div>
-
-      <!-- Exam Countdown -->
-      <div class="card glass reveal countdown-card">
-        <div class="card-head">
-          <h3><i class="fa-solid fa-hourglass-half"></i> <span data-i18n="dashboard.examCountdown">পরীক্ষার কাউন্টডাউন</span></h3>
-        </div>
-        <div class="countdown-display">
-          <div class="countdown-days">
-            <span id="countdownDays">--</span>
-            <small data-i18n="dashboard.daysRemaining">দিন বাকি</small>
-          </div>
-          <div class="countdown-label">
-            <i class="fa-solid fa-bullseye"></i>
-            <span id="countdownExamName" data-i18n="dashboard.defaultExam">Next Target Exam: SSC CGL 2026</span>
-          </div>
-        </div>
-        <form id="examForm" class="stack-form">
-          <label>
-            <span data-i18n="dashboard.examName">পরীক্ষার নাম</span>
-            <input type="text" id="examNameInput" placeholder="SSC CGL 2026" />
-          </label>
-          <label>
-            <span data-i18n="dashboard.examDate">পরীক্ষার তারিখ</span>
-            <input type="date" id="examDateInput" />
-          </label>
-          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="dashboard.setExam">সেভ করো</span></button>
-        </form>
-      </div>
+        <p style="color:var(--text-soft); font-size:0.9rem;">আপনার সব প্রগ্রেস একটি JSON ফাইলে সেভ করে রাখুন এবং পরে রিস্টোর করুন।</p>
     </div>
   </section>
 
-  <!-- ===== STUDY PLANNER + POMODORO ===== -->
+  <!-- Planner (Kanban) -->
   <section class="section" id="planner">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-calendar-days"></i> <span data-i18n="planner.tag">Plan</span></span>
-      <h2 data-i18n="planner.heading">স্টাডি প্ল্যানার</h2>
-      <p data-i18n="planner.subtitle">তোমার পড়াশোনার সময়সূচি সংগঠিত করো</p>
+      <span class="section-tag"><i class="fa-solid fa-calendar-days"></i> Kanban Plan</span>
+      <h2>স্মার্ট স্টাডি প্ল্যানার</h2>
     </div>
-
-    <div class="planner-grid">
-      <div class="card glass reveal">
-        <div class="card-head">
-          <h3><i class="fa-solid fa-pen-to-square"></i> <span data-i18n="planner.addTask">নতুন কাজ যোগ করো</span></h3>
-        </div>
-        <form id="plannerForm" class="stack-form">
-          <label>
-            <span data-i18n="planner.taskName">কাজের নাম</span>
-            <input type="text" id="pName" placeholder="Percentage Revision" required />
-          </label>
-          <div class="form-row">
-            <label>
-              <span data-i18n="planner.subject">বিষয়</span>
-              <select id="pSubject">
-                <option>Mathematics</option>
-                <option>Reasoning</option>
-                <option>English</option>
-                <option>General Knowledge</option>
-                <option>Economy</option>
-                <option>Current Affairs</option>
-              </select>
-            </label>
-            <label>
-              <span data-i18n="planner.duration">সময় (মিনিট)</span>
-              <input type="number" id="pDuration" min="5" max="600" value="60" />
-            </label>
-          </div>
-          <div class="form-row">
-            <label>
-              <span data-i18n="planner.priority">অগ্রাধিকার</span>
-              <select id="pPriority">
-                <option value="High" data-i18n="common.high">High</option>
-                <option value="Medium" data-i18n="common.medium">Medium</option>
-                <option value="Low" data-i18n="common.low">Low</option>
-              </select>
-            </label>
-            <label>
-              <span data-i18n="planner.date">তারিখ</span>
-              <input type="date" id="pDate" />
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> <span data-i18n="planner.addTaskBtn">কাজ যোগ করো</span></button>
-        </form>
-      </div>
-
-      <div class="card glass reveal pomodoro-card">
-        <div class="card-head">
-          <h3><i class="fa-solid fa-stopwatch"></i> Pomodoro Focus Timer</h3>
-        </div>
-        <div class="pomodoro-modes">
-          <button class="pmode active" data-mode="focus" data-i18n="pomodoro.focus">ফোকাস</button>
-          <button class="pmode" data-mode="short" data-i18n="pomodoro.shortBreak">শর্ট ব্রেক</button>
-          <button class="pmode" data-mode="long" data-i18n="pomodoro.longBreak">লং ব্রেক</button>
-        </div>
-        <div class="timer-circle">
-          <svg viewBox="0 0 200 200" aria-hidden="true">
-            <circle class="t-track" cx="100" cy="100" r="90"></circle>
-            <circle class="t-progress" id="tProgress" cx="100" cy="100" r="90"></circle>
-          </svg>
-          <div class="timer-display">
-            <span id="timerText">25:00</span>
-            <small id="timerMode" data-i18n="pomodoro.focus">ফোকাস</small>
-          </div>
-        </div>
-        <div class="timer-controls">
-          <button class="btn btn-primary" id="tStart"><i class="fa-solid fa-play"></i> <span data-i18n="pomodoro.start">শুরু</span></button>
-          <button class="btn btn-ghost" id="tPause"><i class="fa-solid fa-pause"></i> <span data-i18n="pomodoro.pause">বিরতি</span></button>
-          <button class="btn btn-ghost" id="tReset"><i class="fa-solid fa-rotate-left"></i> <span data-i18n="pomodoro.reset">রিসেট</span></button>
-        </div>
-        <p class="motivation-line" data-i18n="pomodoro.motivation">ফোকাস রাখো, প্রবাকর! ছোট ছোট নিয়মিত প্রচেষ্টাই বড় সাফল্য আনে।</p>
-      </div>
-    </div>
-
     <div class="card glass reveal">
-      <div class="card-head filter-head">
-        <h3><i class="fa-solid fa-tasks"></i> <span data-i18n="planner.myTasks">আমার কাজসমূহ</span></h3>
-        <div class="filters" id="plannerFilters">
-          <button class="filter active" data-filter="all" data-i18n="planner.filterAll">সব</button>
-          <button class="filter" data-filter="today" data-i18n="planner.filterToday">আজ</button>
-          <button class="filter" data-filter="completed" data-i18n="planner.filterCompleted">সম্পন্ন</button>
-          <button class="filter" data-filter="pending" data-i18n="planner.filterPending">বাকি</button>
-          <button class="filter" data-filter="High" data-i18n="planner.filterHigh">উচ্চ অগ্রাধিকার</button>
+        <form id="plannerForm" class="inline-form" style="margin-bottom: 1.5rem;">
+            <input type="text" id="pName" placeholder="নতুন টাস্ক যোগ করো (Task Name)" required />
+            <select id="pPriority" style="max-width: 150px;"><option value="High">High</option><option value="Medium">Medium</option><option value="Low">Low</option></select>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> যোগ</button>
+        </form>
+        <div class="kanban-board" id="kanbanBoard">
+            <div class="kanban-col" data-status="pending">
+                <h4><i class="fa-solid fa-clock"></i> Pending</h4>
+                <div class="kanban-cards" id="col-pending"></div>
+            </div>
+            <div class="kanban-col" data-status="progress">
+                <h4><i class="fa-solid fa-spinner"></i> In Progress</h4>
+                <div class="kanban-cards" id="col-progress"></div>
+            </div>
+            <div class="kanban-col" data-status="completed">
+                <h4><i class="fa-solid fa-check-circle"></i> Completed</h4>
+                <div class="kanban-cards" id="col-completed"></div>
+            </div>
         </div>
-      </div>
-      <div id="plannerList" class="planner-list"></div>
     </div>
   </section>
 
-  <!-- ===== SYLLABUS TRACKER ===== -->
+  <!-- Syllabus -->
   <section class="section" id="syllabus">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> <span data-i18n="syllabus.tag">Track</span></span>
-      <h2 data-i18n="syllabus.heading">সিলেবাস ট্র্যাকার</h2>
-      <p data-i18n="syllabus.subtitle">বিষয় অনুযায়ী সম্পন্ন টপিক চিহ্নিত করো</p>
+      <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Track</span>
+      <h2>সিলেবাস ট্র্যাকার</h2>
     </div>
     <div class="syllabus-grid" id="syllabusGrid"></div>
   </section>
 
-  <!-- ===== QUIZ ZONE ===== -->
+  <!-- Quiz -->
   <section class="section" id="quiz">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-clipboard-question"></i> <span data-i18n="quiz.tag">Practice</span></span>
-      <h2 data-i18n="quiz.heading">কুইজ জোন</h2>
-      <p data-i18n="quiz.subtitle">নিয়মিত অনুশীলন দিয়ে নিজেকে যাচাই করো</p>
+      <span class="section-tag"><i class="fa-solid fa-clipboard-question"></i> Adaptive</span>
+      <h2>কুইজ জোন (Negative Marking)</h2>
     </div>
-
     <div class="card glass reveal quiz-setup" id="quizSetup">
       <div class="quiz-options">
-        <label>
-          <span data-i18n="quiz.subject">বিষয়</span>
-          <select id="quizSubject">
-            <option value="Mathematics">Mathematics / গণিত</option>
-            <option value="Reasoning">Reasoning / রিজনিং</option>
-            <option value="English">English / ইংরেজি</option>
-            <option value="General Knowledge">General Knowledge / সাধারণ জ্ঞান</option>
-            <option value="Economy & Banking">Economy & Banking / অর্থনীতি ও ব্যাংকিং</option>
-          </select>
-        </label>
-        <label>
-          <span data-i18n="quiz.difficulty">কঠিনতা</span>
-          <select id="quizDifficulty">
-            <option value="Easy" data-i18n="quiz.easy">সহজ</option>
-            <option value="Medium" selected data-i18n="quiz.medium">মধ্যম</option>
-            <option value="Hard" data-i18n="quiz.hard">কঠিন</option>
-          </select>
-        </label>
-        <label>
-          <span data-i18n="quiz.count">প্রশ্ন সংখ্যা</span>
-          <select id="quizCount">
-            <option value="5">5</option>
-            <option value="10" selected>10</option>
-            <option value="20">20</option>
-          </select>
-        </label>
+        <label><span>বিষয়</span><select id="quizSubject"><option>Mathematics</option><option>Reasoning</option><option>English</option><option>General Knowledge</option><option>Economy & Banking</option></select></label>
+        <label><span>কঠিনতা</span><select id="quizDifficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+        <label class="checkbox-label"><input type="checkbox" id="negativeMarking" checked /> <span>নেগেটিভ মার্কিং (-0.25)</span></label>
       </div>
-      <button class="btn btn-primary btn-lg" id="startQuizBtn"><i class="fa-solid fa-play"></i> <span data-i18n="quiz.start">কুইজ শুরু করো</span></button>
+      <button class="btn btn-primary btn-lg" id="startQuizBtn"><i class="fa-solid fa-play"></i> শুরু করো</button>
     </div>
-
-    <!-- Quiz Active -->
     <div class="card glass reveal quiz-active" id="quizActive" hidden>
       <div class="quiz-topbar">
-        <div class="quiz-progress">
-          <span id="quizQuestionCount">Question 1 of 10</span>
-          <div class="quiz-progress-bar"><span id="quizProgressBar" style="width:10%"></span></div>
-        </div>
+        <div class="quiz-progress"><span id="quizQuestionCount">Question 1 of 10</span><div class="quiz-progress-bar"><span id="quizProgressBar" style="width:10%"></span></div></div>
         <div class="quiz-timer"><i class="fa-solid fa-stopwatch"></i> <span id="quizTimer">00:00</span></div>
       </div>
-      <div class="quiz-question-block" id="quizQuestionBlock">
-        <h3 id="quizQuestionText"></h3>
-        <div class="quiz-options-list" id="quizOptionsList"></div>
-      </div>
-      <div class="quiz-nav">
-        <button class="btn btn-ghost" id="quizPrev"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="quiz.prev">আগের</span></button>
-        <button class="btn btn-primary" id="quizNext"><span data-i18n="quiz.next">পরের</span> <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
+      <div class="quiz-question-block"><h3 id="quizQuestionText"></h3><div class="quiz-options-list" id="quizOptionsList"></div></div>
+      <div class="quiz-nav"><button class="btn btn-ghost" id="quizPrev"><i class="fa-solid fa-arrow-left"></i> আগের</button><button class="btn btn-primary" id="quizNext">পরের <i class="fa-solid fa-arrow-right"></i></button></div>
     </div>
-
-    <!-- Quiz Result -->
     <div class="card glass reveal quiz-result" id="quizResult" hidden>
-      <div class="result-ring">
-        <svg viewBox="0 0 200 200">
-          <circle class="r-track" cx="100" cy="100" r="85"></circle>
-          <circle class="r-progress" id="resultRing" cx="100" cy="100" r="85"></circle>
-        </svg>
-        <div class="result-center">
-          <span id="resultPercent">0%</span>
-          <small data-i18n="quiz.yourScore">তোমার স্কোর</small>
-        </div>
-      </div>
+      <h3 style="text-align:center; margin-bottom:1rem;">কুইজ ফলাফল</h3>
       <div class="result-stats">
-        <div class="rs-item"><i class="fa-solid fa-check"></i> <span data-i18n="quiz.correct">সঠিক</span>: <b id="resultCorrect">0</b></div>
-        <div class="rs-item"><i class="fa-solid fa-xmark"></i> <span data-i18n="quiz.wrong">ভুল</span>: <b id="resultWrong">0</b></div>
-        <div class="rs-item"><i class="fa-solid fa-clock"></i> <span data-i18n="quiz.time">সময়</span>: <b id="resultTime">0s</b></div>
+        <div class="rs-item"><i class="fa-solid fa-check"></i> সঠিক: <b id="resultCorrect">0</b></div>
+        <div class="rs-item"><i class="fa-solid fa-xmark"></i> ভুল: <b id="resultWrong">0</b></div>
+        <div class="rs-item"><i class="fa-solid fa-star"></i> স্কোর: <b id="resultScore">0</b></div>
       </div>
-      <p class="result-feedback" id="resultFeedback"></p>
-      <div class="result-actions">
-        <button class="btn btn-primary" id="quizRetry"><i class="fa-solid fa-rotate-right"></i> <span data-i18n="quiz.retry">আবার চেষ্টা করো</span></button>
-        <button class="btn btn-ghost" id="quizReview"><i class="fa-solid fa-eye"></i> <span data-i18n="quiz.review">ভুল উত্তর রিভিউ</span></button>
-      </div>
-    </div>
-
-    <!-- Wrong Answer Review -->
-    <div class="card glass reveal" id="quizReviewPanel" hidden>
-      <div class="card-head">
-        <h3><i class="fa-solid fa-clipboard-list"></i> <span data-i18n="quiz.reviewTitle">ভুল উত্তর রিভিউ</span></h3>
-        <button class="btn btn-sm btn-ghost" id="closeReview"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div id="reviewContent"></div>
+      <div class="result-actions" style="margin-top:1.5rem;"><button class="btn btn-primary" id="quizRetry"><i class="fa-solid fa-rotate-right"></i> আবার</button></div>
     </div>
   </section>
 
-  <!-- ===== CURRENT AFFAIRS ===== -->
-  <section class="section" id="current">
-    <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-newspaper"></i> <span data-i18n="current.tag">Notes</span></span>
-      <h2 data-i18n="current.heading">কারেন্ট অ্যাফেয়ার্স</h2>
-      <p data-i18n="current.subtitle">গুরুত্বপূর্ণ তথ্য ও নোট সংরক্ষণ করো</p>
-    </div>
-
-    <div class="demo-banner reveal">
-      <i class="fa-solid fa-circle-info"></i>
-      <span data-i18n="current.sample">নমুনা ডেমো কনটেন্ট — এটি লাইভ বা রিয়েল-টাইম তথ্য নয়।</span>
-    </div>
-
-    <div class="card glass reveal">
-      <div class="current-controls">
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="currentSearch" placeholder="নোট খুঁজো / Search notes..." />
-        </div>
-        <div class="filters" id="currentFilters">
-          <button class="filter active" data-filter="all" data-i18n="current.all">সব</button>
-          <button class="filter" data-filter="National" data-i18n="current.national">জাতীয়</button>
-          <button class="filter" data-filter="International" data-i18n="current.international">আন্তর্জাতিক</button>
-          <button class="filter" data-filter="Economy" data-i18n="current.economy">অর্থনীতি</button>
-          <button class="filter" data-filter="Sports" data-i18n="current.sports">খেলাধুলা</button>
-          <button class="filter" data-filter="Awards" data-i18n="current.awards">পুরস্কার</button>
-          <button class="filter" data-filter="Science & Technology" data-i18n="current.sciTech">বিজ্ঞান ও প্রযুক্তি</button>
-        </div>
-      </div>
-      <div class="notes-grid" id="notesGrid"></div>
-    </div>
-  </section>
-
-  <!-- ===== REVISION ===== -->
+  <!-- Revision -->
   <section class="section" id="revision">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-brain"></i> <span data-i18n="revision.tag">Revise</span></span>
-      <h2 data-i18n="revision.heading">স্মার্ট রিভিশন</h2>
-      <p data-i18n="revision.subtitle">ফ্ল্যাশকার্ড, ফর্মুলা ও শব্দভাণ্ডার দিয়ে ঝালিয়ে নাও</p>
+      <span class="section-tag"><i class="fa-solid fa-brain"></i> Smart Revise</span>
+      <h2>স্মার্ট রিভিশন</h2>
     </div>
-
     <div class="card glass reveal">
-      <div class="tabs" id="revisionTabs">
-        <button class="tab active" data-tab="flashcards"><i class="fa-solid fa-clone"></i> <span data-i18n="revision.flashcards">ফ্ল্যাশকার্ড</span></button>
-        <button class="tab" data-tab="formula"><i class="fa-solid fa-square-root-variable"></i> <span data-i18n="revision.formula">ফর্মুলা বুক</span></button>
-        <button class="tab" data-tab="vocab"><i class="fa-solid fa-language"></i> <span data-i18n="revision.vocab">শব্দভাণ্ডার</span></button>
-      </div>
-
-      <!-- Flashcards -->
+      <div class="tabs"><button class="tab active" data-tab="flashcards">ফ্ল্যাশকার্ড</button><button class="tab" data-tab="formula">ফর্মুলা</button></div>
       <div class="tab-panel active" id="tab-flashcards">
-        <div class="flashcard-stage">
-          <div class="flashcard" id="flashcard">
-            <div class="fc-front">
-              <small>Front</small>
-              <p id="fcFront"></p>
-              <span class="fc-hint" data-i18n="revision.flipHint">ক্লিক করে উল্টাও</span>
-            </div>
-            <div class="fc-back">
-              <small>Back</small>
-              <p id="fcBack"></p>
-              <span class="fc-hint" data-i18n="revision.flipHint">ক্লিক করে উল্টাও</span>
-            </div>
-          </div>
-        </div>
-        <div class="flashcard-controls">
-          <button class="btn btn-ghost" id="fcPrev"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="revision.prev">আগের</span></button>
-          <button class="btn btn-ghost" id="fcShuffle"><i class="fa-solid fa-shuffle"></i> <span data-i18n="revision.shuffle">শাফল</span></button>
-          <button class="btn btn-ghost" id="fcNext"><span data-i18n="revision.next">পরের</span> <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-        <div class="flashcard-status">
-          <button class="btn btn-sm btn-success" id="fcKnown"><i class="fa-solid fa-thumbs-up"></i> <span data-i18n="revision.known">জানা আছে</span></button>
-          <button class="btn btn-sm btn-warning" id="fcNeed"><i class="fa-solid fa-repeat"></i> <span data-i18n="revision.needRevision">আবার পড়তে হবে</span></button>
-        </div>
-        <p class="counter-text" id="fcCounter">1 / 6</p>
+        <div class="flashcard-stage"><div class="flashcard" id="flashcard"><div class="fc-front"><p id="fcFront"></p></div><div class="fc-back"><p id="fcBack"></p></div></div></div>
+        <div class="flashcard-controls"><button class="btn btn-ghost" id="fcPrev">আগের</button><button class="btn btn-ghost" id="fcNext">পরের</button></div>
       </div>
-
-      <!-- Formula Book -->
-      <div class="tab-panel" id="tab-formula">
-        <div class="formula-grid" id="formulaGrid"></div>
-      </div>
-
-      <!-- Vocabulary -->
-      <div class="tab-panel" id="tab-vocab">
-        <div class="vocab-grid" id="vocabGrid"></div>
-      </div>
+      <div class="tab-panel" id="tab-formula"><div class="formula-grid" id="formulaGrid"></div></div>
     </div>
   </section>
 
-  <!-- ===== PROGRESS ===== -->
+  <!-- Progress -->
   <section class="section" id="progress">
     <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-chart-line"></i> <span data-i18n="progress.tag">Analytics</span></span>
-      <h2 data-i18n="progress.heading">তোমার অগ্রগতি</h2>
-      <p data-i18n="progress.subtitle">ডেটা দিয়ে নিজেকে বিশ্লেষণ করো</p>
+      <span class="section-tag"><i class="fa-solid fa-chart-line"></i> Analytics</span>
+      <h2>প্রগ্রেস অ্যানালিটিক্স</h2>
     </div>
-
-    <div class="progress-grid">
-      <div class="card glass reveal">
-        <div class="card-head"><h3><i class="fa-solid fa-chart-column"></i> <span data-i18n="progress.weekly">সাপ্তাহিক পড়ার সময়</span></h3></div>
-        <canvas id="weeklyChart"></canvas>
-      </div>
-      <div class="card glass reveal">
-        <div class="card-head"><h3><i class="fa-solid fa-chart-pie"></i> <span data-i18n="progress.subject">বিষয়ভিত্তিক পারফরম্যান্স</span></h3></div>
-        <canvas id="subjectChart"></canvas>
-      </div>
-    </div>
-
     <div class="card glass reveal">
-      <div class="card-head"><h3><i class="fa-solid fa-table-list"></i> <span data-i18n="progress.recentQuiz">সাম্প্রতিক কুইজ ফলাফল</span></h3></div>
-      <div class="table-wrap">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th data-i18n="progress.colQuiz">কুইজ</th>
-              <th data-i18n="progress.colScore">স্কোর</th>
-              <th data-i18n="progress.colPercent">শতকরা</th>
-            </tr>
-          </thead>
-          <tbody id="quizHistoryBody"></tbody>
-        </table>
-      </div>
+        <div class="card-head"><h3><i class="fa-solid fa-fire"></i> স্টাডি হিটম্যাপ (Last 30 Days)</h3></div>
+        <div class="heatmap-grid" id="heatmapGrid"></div>
     </div>
-
-    <div class="card glass reveal">
-      <div class="card-head"><h3><i class="fa-solid fa-lightbulb"></i> <span data-i18n="progress.suggestions">দুর্বল ক্ষেত্রের পরামর্শ</span></h3></div>
-      <ul class="suggestion-list" id="suggestionList"></ul>
+    <div class="progress-grid" style="margin-top:1.5rem;">
+        <div class="card glass reveal"><div class="card-head"><h3>সাপ্তাহিক</h3></div><canvas id="weeklyChart"></canvas></div>
+        <div class="card glass reveal"><div class="card-head"><h3>সাবজেক্ট</h3></div><canvas id="subjectChart"></canvas></div>
     </div>
   </section>
 
-  <!-- ===== MOTIVATION ===== -->
-  <section class="section" id="motivation">
-    <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-quote-right"></i> <span data-i18n="motivation.tag">Inspire</span></span>
-      <h2 data-i18n="motivation.heading">আজকের অনুপ্রেরণা</h2>
-    </div>
-    <div class="card glass reveal quote-card">
-      <i class="fa-solid fa-quote-left quote-icon"></i>
-      <blockquote id="quoteText"></blockquote>
-      <p id="quoteTranslation" class="quote-translation"></p>
-      <button class="btn btn-primary" id="newQuoteBtn"><i class="fa-solid fa-arrows-rotate"></i> <span data-i18n="motivation.newQuote">নতুন অনুপ্রেরণা</span></button>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section" id="about">
-    <div class="section-head reveal">
-      <span class="section-tag"><i class="fa-solid fa-circle-info"></i> <span data-i18n="about.tag">About</span></span>
-      <h2 data-i18n="about.heading">প্রবাকর প্রেপ হাব সম্পর্কে</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="card glass reveal profile-card">
-        <div class="profile-avatar"><i class="fa-solid fa-user-graduate"></i></div>
-        <h3 id="profileName">Provakar</h3>
-        <ul class="profile-list">
-          <li><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="about.qualLabel">যোগ্যতা:</span> <b data-i18n="about.qual">B.Com Honours Graduate</b></li>
-          <li><i class="fa-solid fa-bullseye"></i> <span data-i18n="about.goalLabel">লক্ষ্য:</span> <b data-i18n="about.goal">Competitive Exam Aspirant</b></li>
-          <li><i class="fa-solid fa-star"></i> <span data-i18n="about.skillsLabel">দক্ষতা:</span> <b data-i18n="about.skills">Self-learning, Consistent Practice, Digital Study Planning</b></li>
-        </ul>
-      </div>
-      <div class="card glass reveal">
-        <p data-i18n="about.textBn">Provakar Prep Hub হলো একটি ব্যক্তিগত Competitive Exam Preparation Dashboard। এটি তৈরি করা হয়েছে প্রতিদিনের পড়াশোনা পরিকল্পনা করা, সিলেবাস ট্র্যাক করা, MCQ অনুশীলন করা, কারেন্ট অ্যাফেয়ার্স রিভিশন করা এবং নিজের অগ্রগতি পর্যবেক্ষণ করার জন্য।</p>
-        <p class="about-en" data-i18n="about.textEn">Provakar Prep Hub is a personal competitive exam preparation dashboard designed to organize daily study plans, track syllabus progress, practice MCQs, revise current affairs, and monitor learning performance.</p>
-        <div class="exam-tags">
-          <span>SSC</span><span>Banking</span><span>Railway</span><span>WBCS/PSC</span><span>Insurance</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-brand">
-        <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-        <div>
-          <strong>Provakar Prep Hub</strong>
-          <small data-i18n="footer.tagline">Your Smart Competitive Exam Preparation Companion</small>
-        </div>
-      </div>
-      <p data-i18n="footer.madeBy">ভক্তির সঙ্গে তৈরি — Provakar</p>
-      <p data-i18n="footer.education">B.Com Honours Graduate | Competitive Exam Aspirant</p>
-      <div class="footer-social">
-        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:provakar@example.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-      </div>
-      <p class="copyright">© 2026 Provakar Prep Hub. <span data-i18n="footer.rights">সর্বস্বত্ব সংরক্ষিত।</span></p>
+      <p>© 2026 Provakar Prep Hub (Extreme Edition). সর্বস্বত্ব সংরক্ষিত।</p>
     </div>
   </footer>
-
-  <!-- Scroll to top -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
   <script src="script.js" defer></script>
 </body>
